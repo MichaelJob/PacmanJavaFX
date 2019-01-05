@@ -1,2 +1,5 @@
-# PacmanJavaFX
-Java FX Playground - PacMan
+# PacmanJFX
+
+Pacman running on JavaFX
+
+a playground...
