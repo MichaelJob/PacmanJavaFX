@@ -2,7 +2,7 @@
 
 Pacman running on JavaFX
 
-###a playground...
+### a playground...
 
 to demonstrate A* algorithm, so ghosts are able to haunt pacman.
 
