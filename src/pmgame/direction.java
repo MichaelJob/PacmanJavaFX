@@ -1,7 +1,5 @@
-package game;
+package pmgame;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +11,7 @@ import java.util.Random;
 public enum direction {
     N, S, E, W;
 
-    private static final List<direction> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
+    private static final List<direction> VALUES = List.of(values());
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
 

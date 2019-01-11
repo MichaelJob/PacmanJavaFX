@@ -1,4 +1,4 @@
-package game;
+package pmgame;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
@@ -15,10 +15,10 @@ public class Pacman {
     private static int y;
     private static direction dir = direction.E;
     protected static ImageView pacmanIV = new ImageView(); // use only one ImageView
-    private static Image pcE = new Image(Main.class.getResourceAsStream("./resources/pacmanE.gif"));
-    private static Image pcN = new Image(Main.class.getResourceAsStream("./resources/pacmanN.gif"));
-    private static Image pcW = new Image(Main.class.getResourceAsStream("./resources/pacmanW.gif"));
-    private static Image pcS = new Image(Main.class.getResourceAsStream("./resources/pacmanS.gif"));
+    private static Image pcE = new Image(Main.class.getResourceAsStream("/pacmanE.gif"));
+    private static Image pcN = new Image(Main.class.getResourceAsStream("/pacmanN.gif"));
+    private static Image pcW = new Image(Main.class.getResourceAsStream("/pacmanW.gif"));
+    private static Image pcS = new Image(Main.class.getResourceAsStream("/pacmanS.gif"));
     private static Sound sound = new Sound();
     private static int yellowDots;
     private static int eatenDots = 0;

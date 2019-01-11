@@ -1,4 +1,4 @@
-package game;
+package pmgame;
 
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static game.Pacman.pacmanIV;
+import static pmgame.Pacman.pacmanIV;
 
 public class Main extends Application {
 
@@ -88,7 +88,7 @@ public class Main extends Application {
 
             root.setCenter(playground);
             scene = new Scene(root, 1024, 1024);
-            scene.getStylesheets().add(getClass().getResource("./../game/resources/application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setFullScreen(false);
 
@@ -133,9 +133,7 @@ public class Main extends Application {
 
         // make the pacman change direction
         // scene.setOnKeyPressed(e -> pm.setDirection(e.getCode())); for JDK 8 and older, bug in JDK 9, 10 !
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
-            pm.setDirection(e.getCode());
-        });
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, e -> pm.setDirection(e.getCode()));
 
         btStart.setOnAction(e -> StartGame());
 
@@ -167,7 +165,7 @@ public class Main extends Application {
         ghosts.add(g4);
 
         // Set AI ghosts
-        for (int i = 0; i < (int) nrAIGhostsCheckbox.getValue(); i++) {
+        for (int i = 0; i < nrAiGhosts; i++) {
             ghosts.get(i).setAI(true);
         }
 
@@ -182,13 +180,13 @@ public class Main extends Application {
                 ses.scheduleWithFixedDelay(() -> ghosts.get(j).go(), 0, 500 + (j * 25), TimeUnit.MILLISECONDS);
             }
             //make all ghosts weak and stupid from time to time
-            ghosts.forEach(g -> ses.scheduleWithFixedDelay(() -> g.setWeak(), 7, 16, TimeUnit.SECONDS));
-            ses.scheduleWithFixedDelay(() -> unsetWeakGhosts(), 12, 16, TimeUnit.SECONDS);
+            ghosts.forEach(g -> ses.scheduleWithFixedDelay(g::setWeak, 7, 16, TimeUnit.SECONDS));
+            ses.scheduleWithFixedDelay(Main::unsetWeakGhosts, 12, 16, TimeUnit.SECONDS);
         }
     }
 
     private static void unsetWeakGhosts() {
-        ghosts.forEach(ghost -> ghost.unsetWeak());
+        ghosts.forEach(Ghost::unsetWeak);
         // make some of the ghosts smart again
         for (int i = 0; i < (int) nrAIGhostsCheckbox.getValue(); i++) {
             ghosts.get(i).setAI(true);

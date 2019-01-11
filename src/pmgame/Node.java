@@ -1,4 +1,4 @@
-package game;
+package pmgame;
 
 public class Node {
 

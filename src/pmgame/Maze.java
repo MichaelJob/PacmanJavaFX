@@ -1,4 +1,4 @@
-package game;
+package pmgame;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -73,9 +73,9 @@ public class Maze {
 
     public static int getZeros() {
         int result = 1;
-        for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[i].length; j++) {
-                if (maze[i][j] == 0 || maze[i][j] == -1) {
+        for (int[] ints : maze) {
+            for (int anInt : ints) {
+                if (anInt == 0 || anInt == -1) {
                     result++;
                 }
             }

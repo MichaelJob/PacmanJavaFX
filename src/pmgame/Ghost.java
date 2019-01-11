@@ -1,4 +1,4 @@
-package game;
+package pmgame;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
@@ -13,15 +13,15 @@ public class Ghost {
     public int gh;  //this ghosts color number
     public direction dir = direction.E;
     public ImageView ghost = new ImageView();
-    public Image gh1 = new Image(Main.class.getResourceAsStream("./resources/orange.gif"));
-    public Image gh2 = new Image(Main.class.getResourceAsStream("./resources/blue.gif"));
-    public Image gh3 = new Image(Main.class.getResourceAsStream("./resources/red.gif"));
-    public Image gh4 = new Image(Main.class.getResourceAsStream("./resources/pinky.gif"));
-    public Image ghWeak = new Image(Main.class.getResourceAsStream("./resources/deadghost.gif"));
+    public Image gh1 = new Image(Main.class.getResourceAsStream("/orange.gif"));
+    public Image gh2 = new Image(Main.class.getResourceAsStream("/blue.gif"));
+    public Image gh3 = new Image(Main.class.getResourceAsStream("/red.gif"));
+    public Image gh4 = new Image(Main.class.getResourceAsStream("/pinky.gif"));
+    public Image ghWeak = new Image(Main.class.getResourceAsStream("/deadghost.gif"));
     public boolean weak = false;    //Ghosts can be weak, then they are slower and get eaten by pacman
 
 
-    public boolean AI = true;
+    public boolean AI;
 
     public Ghost(int x, int y, int gh, boolean AI) {
         this.x = x;
