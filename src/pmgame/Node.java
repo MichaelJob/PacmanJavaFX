@@ -4,7 +4,7 @@ public class Node {
 
     private int fieldtype;
     private Node parent;
-    private int hValue; //heuristic waycost to pacman
+    private int hValue; // heuristic waycost to pacman
     private int fValue; // g+h where g is const 10 (initial value is 0)
     private int x;
     private int y;

@@ -20,34 +20,6 @@ public enum direction {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 
-/*    // native approach
-    public static direction getDirection2Pacman(int x, int y){
-        int pmX = Main.pm.getPMLocation()[0];
-        int pmY = Main.pm.getPMLocation()[1];
-
-        int deltaX = pmX-x;
-        int deltaY = pmY-y;
-
-        if(Math.abs(deltaX)>=Math.abs(deltaY)){
-            if(pmX<x){
-                //go west
-                return W;
-            }else{
-                //go ost
-                return E;
-            }
-        }else{
-            if(pmY<y){
-                //go north
-                return N;
-            }else{
-                //go south
-                return S;
-            }
-        }
-    }
-*/
-
     public static direction getDirectionToNode(Node from, Node to) {
 
         if (to.getX() > from.getX()) {

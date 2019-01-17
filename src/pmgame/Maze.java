@@ -4,12 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Maze for Pacman
- * 0 =Street
- * 1 =Wall
- * -1 =Waypoint (crossing)
- * -2 =Ghostcave
- * 3 and 4 = Tunnel left 3 / right 4
+ *  Maze for Pacman
+ *  0 = Street
+ *  1 = Wall
+ * -1 = Waypoint (crossing)
+ * -2 = Ghostcave
+ *  3 = Tunnel left
+ *  4 = Tunnel right
  */
 
 
@@ -83,6 +84,8 @@ public class Maze {
         return result;
     }
 
+
+    // A* Algorithm for Ghosts to chase Pacman
     public static direction getPathDir(int startX, int startY) {
 
         // reset parents of nodes and clear lists
@@ -99,7 +102,6 @@ public class Maze {
             // calculate heuristics to current pacman position:
             setHeuristic();
 
-
             // reset f value of start node
             nodeMaze[x][y].setfValue(0);
 
@@ -109,7 +111,7 @@ public class Maze {
                 open.remove(nodeMaze[x][y]);
                 closed.add(nodeMaze[x][y]);
                 // add all neibhbors nodes to
-                // list if not wall and if not in closed (if in open, egal da Set)
+                // list if not wall and if not in closed (if in open, no worries because of set)
                 if (nodeMaze[x - 1][y].getFieldtype() != 1 && !closed.contains(nodeMaze[x - 1][y])) {
                     open.add(nodeMaze[x - 1][y]);
                 }
