@@ -58,20 +58,6 @@ public class Maze {
         }
     }
 
-
-    public static void setHeuristic() {
-
-        int xPM = Main.pm.getPMLocation()[0];
-        int yPM = Main.pm.getPMLocation()[1];
-
-        for (int i = 0; i < mazeSize; i++) {
-            for (int j = 0; j < mazeSize; j++) {
-                nodeMaze[i][j].sethValue(Math.abs(xPM - i) + Math.abs(yPM - j));
-            }
-        }
-    }
-
-
     public static int getZeros() {
         int result = 1;
         for (int[] ints : maze) {
@@ -84,6 +70,18 @@ public class Maze {
         return result;
     }
 
+    public static void setHeuristic() {
+
+        // get PM position
+        int xPM = Main.pm.getPMLocation()[0];
+        int yPM = Main.pm.getPMLocation()[1];
+
+        for (int i = 0; i < mazeSize; i++) {
+            for (int j = 0; j < mazeSize; j++) {
+                nodeMaze[i][j].sethValue(Math.abs(xPM - i) + Math.abs(yPM - j));
+            }
+        }
+    }
 
     // A* Algorithm for Ghosts to chase Pacman
     public static direction getPathDir(int startX, int startY) {
@@ -132,14 +130,16 @@ public class Maze {
                 Node minFnode = open.iterator().next();
                 for (Node node : open) {
                     if (node.getParent() == null) {
+                        // set f value for node
                         node.setfValue(node.gethValue() + WAYCOST);
+                        //set parent node
                         node.setParent(nodeMaze[x][y]);
                     }
                     if (node.getfValue() < minFnode.getfValue()) {
                         minFnode = node;
                     }
                 }
-                // set next node...
+                // set next node, to node with smallest F-Value
                 x = minFnode.getX();
                 y = minFnode.getY();
             }
@@ -147,12 +147,15 @@ public class Maze {
             Node nextNode = nodeMaze[x][y];
             Node startNode = nodeMaze[startX][startY];
 
+            // Find node next to ghost in A* path
             while (nextNode.getParent() != startNode) {
                 Node tmp = nextNode;
                 nextNode = tmp.getParent();
             }
 
+            // get direction from startnode to nextnode
             dir = direction.getDirectionToNode(startNode, nextNode);
+
         } else {
             //If ghost is next to PM, get direction from startnode to pacman
             int xPM = Main.pm.getPMLocation()[0];

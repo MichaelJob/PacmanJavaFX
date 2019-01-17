@@ -214,7 +214,7 @@ public class Main extends Application {
         ghosts.clear();
         Alert win = new Alert(Alert.AlertType.INFORMATION, "Congrats - You win");
         win.showAndWait();
-        btStart.setDisable(false);
+        btStart.setDisable(true);
     }
 
     public static void gameover() {
@@ -223,7 +223,7 @@ public class Main extends Application {
         }
         playground.getChildren().remove(pacmanIV);
         title.setText("GAME OVER");
-        btStart.setDisable(false);
+        btStart.setDisable(true);
     }
 
 }
